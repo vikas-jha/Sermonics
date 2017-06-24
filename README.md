@@ -13,10 +13,10 @@ i.e. D00 , D01, D12, A05 etc.
 
 * SPM - Set pin mode.
 
-...SPM [PIN] [PIN_MODE] 
-    PIN_MODE 
-     0  INPUT
-     1  OUTPUT
-     2  INPUT_PULLUP
+...SPM [PIN] [PIN_MODE]   
+    PIN_MODE   
+     0  INPUT  
+     1  OUTPUT   
+     2  INPUT_PULLUP   
 e.g. SPM D06 1 - Sets digital pin 6 to output mode. 
 
