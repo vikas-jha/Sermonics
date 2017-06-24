@@ -6,11 +6,12 @@ Upload the sermonics.ino file to the Arduino. Open serial monitor and type mnemo
 
 ### Mnemonics Usage
 
-####PIN - Most of the mnemonics require pin value. This sketch can support D00 - D99 digital pins, but only A0-A5 analog pins are supported. Pin are specified for mnemonics using a letter for pin type (A- analog, D - digital) and two digit pin number combination 
+#### PIN in mnemonics
+Most of the mnemonics require pin value. This sketch can support D00 - D99 digital pins, but only A0-A5 analog pins are supported. Pin are specified for mnemonics using a letter for pin type (A- analog, D - digital) and two digit pin number combination 
 i.e. D00 , D01, D12, A05 etc.
 
 
-*SPM - Set pin mode.
+* SPM - Set pin mode.
 
 SPM [PIN] [PIN_MODE] 
 PIN_MODE 
