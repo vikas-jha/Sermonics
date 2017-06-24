@@ -12,8 +12,7 @@ i.e. D00 , D01, D12, A05 etc.
 
 
 * SPM - Set pin mode.
-
-...SPM [PIN] [PIN_MODE]   
+   SPM [PIN] [PIN_MODE]   
     PIN_MODE   
      0  INPUT  
      1  OUTPUT   
