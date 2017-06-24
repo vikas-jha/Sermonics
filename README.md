@@ -22,7 +22,7 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
      * 1  OUTPUT   
      * 2  INPUT_PULLUP  
 
-SPM D06 1; - Sets digital pin 6 to output mode.
+   SPM D06 1; - Sets digital pin 6 to output mode.
 
 * SDV - Set digital value. Pin should be in output mode.
    SDV [PIN] [PIN_VALUE];   
@@ -47,12 +47,12 @@ SPM D06 1; - Sets digital pin 6 to output mode.
 * GAV - Get analog value. Only analog input pins must be used. Pin should be in input mode.
    GAV [PIN];    
 
-GAV A03; - Get the analog value of analog pin 6. If  analog value of A04 is 1012, it will return "GAV A03 = 1012;". Analog input can have range 0 - 1024.
+  GAV A03; - Get the analog value of analog pin 6. If  analog value of A04 is 1012, it will return "GAV A03 = 1012;". Analog input can  have range 0 - 1024.
 
 * DLY - Waits for given milliseconds.
    DLY [MILLISECONDS];
  
-DLY 20; - waits for 20 milliseconds. 
+   DLY 20; - waits for 20 milliseconds. 
 
 * DLU - Waits for given microseconds.
    DLU [MICROSECONDS];
