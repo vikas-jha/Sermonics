@@ -27,9 +27,10 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
        PIN_MODE
      * 0 - INPUT  
      * 1 - OUTPUT   
-     * 2 - INPUT_PULLUP  
+     * 2 - INPUT_PULLUP   
+     
+  ```SPM D06 1;``` - Sets digital pin 6 to output mode.
 
-   `SPM D06 1;` - Sets digital pin 6 to output mode.
 ---
 * __SDV [PIN] [DIGITAL_VALUE];__ - Set digital value. Pin should be in output mode.      
     DIGITAL_VALUE   
@@ -37,6 +38,7 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
      * 1  HIGH   
 
   ```SDV D04 1;``` - Sets digital pin 4 to HIGH.
+  
 ---
 * __SAV [PIN] [ANALOG_VALUE];__ - Set analog value. Only PWM output pins must be used. Pin should be in output mode.  
         
@@ -44,15 +46,15 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
 
    ```SAV D06 240;``` - Sets PWM value of digital pin 6 to 240. Analog value must be in range 0 -255.  
 ---
-* __GDV [PIN];__ - Get digital value. Returns digital vlue of pin. Pin should be in input mode.  
+* __GDV [PIN];__ - Get digital value. Returns digital value of pin. Pin should be in input mode.  
      
 
-  ```GDV D04;``` - Gets digital pin 4 to HIGH. If D04 is high, it will return "GDV D04 = 1;". 
+  ```GDV D04;``` - Gets the value of digital pin 4. If D04 is high, it will return "GDV D04 = 1;". 
   The value is 0 - LOW and 1 - HIGH.
 ---
 * __GAV [PIN];__ - Get analog value. Only analog input pins must be used. Pin should be in input mode.     
 
-  ```GAV A03;``` - Get the analog value of analog pin 6. If  analog value of A04 is 1012, it will return "GAV A03 = 1012;". Analog input can  have range 0 - 1024.
+  ```GAV A03;``` - Get the analog value of analog pin 6. If  analog value of A03 is 1012, it will return "GAV A03 = 1012;". Analog input can  have range 0 - 1023.
 ---
 * __DLY [MILLISECONDS];__  - Waits for given milliseconds.  
  
