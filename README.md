@@ -78,8 +78,8 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
 ---
 * __GPI [PIN] [DIGITAL_VALUE];__ - Gets length of pulse. Same as pulseIn().
    DIGITAL_VALUE   
-        * 0 - LOW  
-        * 1 - HIGH
+     * 0 - LOW  
+     * 1 - HIGH  
     
   ```GPI D08 1;``` - Returns the length of next HIGH pulse on digital pin 8. 20000 microseconds is timeout period. If pulse is longer, returns 0.   
   
