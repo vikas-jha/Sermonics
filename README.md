@@ -4,9 +4,11 @@ Sermoncs is Arduino sketch for Uno and Nano. Sermonics stand for serial mnenonic
 __*Refer to warnings and limitations at the bottom, before use.*__
 
 ## How to use
-Upload the sermonics.ino file (from v0.1 folder) to the Arduino Uno or Nano. Open serial monitor and start typing mnemonics. Refers to examples in examples folder, within the version folder
+Upload the sermonics.ino file (from v0.1 folder) to the Arduino Uno or Nano. Open serial monitor and start typing sermonics. Refers to examples in examples folder, within the version folder
 
 ### Sermonics Usage
+
+---
 * Refer the sermonics desciption for usage details. 
 * All sermonics must end with semi-colon (;). 
 * Sermonics returning value have response syntax `sermonics = value;`. 
@@ -18,6 +20,8 @@ Upload the sermonics.ino file (from v0.1 folder) to the Arduino Uno or Nano. Ope
 * An unhandled sermonics will return `sermonics = NOHANDLER;`
 
 ### PIN in Sermonics
+
+---
 Most of the sermonics require pin. This sketch can support D00 - D99 digital pins, but only A0-A5 analog pins are supported. Pin are specified for mnemonics using a letter for pin type (A- analog, D - digital) and two digit pin number combination. Single-digit pin number should be zero-padded. e.g. D02 , D03, D12, A05 etc.
 
 ### Basic Sermonics
@@ -51,18 +55,22 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
 
   ```GDV D04;``` - Gets the value of digital pin 4. If D04 is high, it will return "GDV D04 = 1;". 
   The value is 0 - LOW and 1 - HIGH.
+  
 ---
 * __GAV [PIN];__ - Get analog value. Only analog input pins must be used. Pin should be in input mode.     
 
   ```GAV A03;``` - Get the analog value of analog pin 6. If  analog value of A03 is 1012, it will return "GAV A03 = 1012;". Analog input can  have range 0 - 1023.
+  
 ---
 * __DLY [MILLISECONDS];__  - Waits for given milliseconds.  
  
    ```DLY 20;``` - waits for 20 milliseconds. 
+   
 ---
 * __DLU [MICROSECONDS];__ - Waits for given microseconds.  
     
   ```DLU 2000;``` - waits for 2000 microseconds.   
+  
 ---
 
 ### Advance Sermonics
@@ -72,7 +80,8 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
         * 0  LOW  
         * 1  HIGH
     
-  ```GPI D08 1;``` - Returns the length of next HIGH pulse. 20000 microseconds is timeout period. If pulse is longer, returns 0.   
+  ```GPI D08 1;``` - Returns the length of next HIGH pulse on digital pin 8. 20000 microseconds is timeout period. If pulse is longer, returns 0.   
+  
 ---
 
 ## Warnings 
