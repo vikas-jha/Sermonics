@@ -13,7 +13,7 @@ Upload the sermonics.ino file (from v0.1 folder) to the Arduino Uno or Nano. Ope
 * All sermonics must end with semi-colon (;). 
 * Sermonics returning value have response syntax `sermonics = value;`. 
 * Multiple sermonics can be provided in single sentence upto 50 characters.
-    `"SPM D06 1; SDV D06 1; DLY 1000; SDV D06 0;"` 
+    `"SPM D06 1;SDV D06 1;DLY 1000;SDV D06 0;"` 
 * Sermonics are case-insensitive, but space sensitive.
 * Response will always in upper-case.
 * Sermonics may have extra information for identification after '&#124;'e.g. `SPV D06 1 | 16;`
