@@ -1,10 +1,10 @@
 # Sermonics v0.1
-Sermoncs is Arduino sketch for Uno and Nano. Sermonics stand for serial mnenonics. Mnemonics over the serial port, are used to control the Arduino. This is targeted for getting started with Arduino, without having to upload sketch for every minor change. After uploading this sketch port operations can be controlled using serial I/O. Serail I/O can be managed using Serial Monitor, USB programs / programming, Wireless, Bluetooth etc.  
+Sermonics is an Arduino sketch for Uno and Nano. Sermonics stand for serial mnenonics. Mnemonics over the serial port, are used to control the Arduino. This is targeted for getting started with Arduino, without having to upload sketch for every minor change. After uploading this sketch port operations can be controlled using serial I/O. Serail I/O can be managed using Serial Monitor, USB programs / programming, Wireless, Bluetooth etc.  
 
 __*Refer to [warnings](#warnings) and [limitations](#limitations) at the bottom, before use.*__
 
 ## How to use
-Upload the sermonics.ino file (from v0.1 folder) to the Arduino Uno or Nano. Open serial monitor and start typing sermonics.
+Upload the [sermonics.ino](sermonics.ino) file to the Arduino Uno or Nano. Open serial monitor and start typing sermonics. Refer examples in [examples folder](examples).
 
 ### Sermonics Usage
 
@@ -13,16 +13,16 @@ Upload the sermonics.ino file (from v0.1 folder) to the Arduino Uno or Nano. Ope
 * All sermonics must end with semi-colon (;). 
 * Sermonics returning value have response syntax `sermonics = value;`. 
 * Multiple sermonics can be provided in single sentence upto 50 characters.
-    `"SPM D06 1;SDV D06 1;DLY 1000;SDV D06 0;"` 
-* Sermonics are case-insensitive, but space sensitive.
-* Response will always in upper-case.
-* Sermonics may have extra information for identification after '&#124;'e.g. `SPV D06 1 | 16;`
-* An unhandled sermonics will return `sermonics = NOHANDLER;`
+    `SPM D06 1;SDV D06 1;DLY 1000;SDV D06 0;` 
+* __Sermonics are case-insensitive, but space sensitive.__
+* Response is always in upper-case.
+* Extra information for identification can be added to sermonics, after '&#124;'e.g. `GPV D06 1 | 16;`.
+* An unhandled sermonics will return `sermonics = NOHANDLER;`.
 
 ### PIN in Sermonics
 
 ---
-Most of the sermonics require pin. This sketch can support D00 - D99 digital pins, but only A0-A5 analog pins are supported. Pin are specified for mnemonics using a letter for pin type (A- analog, D - digital) and two digit pin number combination. Single-digit pin number should be zero-padded. e.g. D02 , D03, D12, A05 etc.
+Most of the sermonics require pin. This sketch can support `D00` - `D99` digital pins, but only `A0` - `A5` analog pins are supported. Pin are specified for sermonics using a letter for pin type (A- analog, D - digital) and two digit pin number combination. Single-digit pin number should be zero-padded. e.g. `D02`, `D03`, `D12`, `A05` etc.
 
 ### Basic Sermonics
 
@@ -61,10 +61,10 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
   * 1 - HIGH.
   
 ---
-* __GAV [PIN];__ - Get analog value. Only analog input pins must be used. Pin should be in input mode.     
+* __GAV [PIN];__ - Get analog value. Only analog pins must be used. Pin should be in input mode.     
 
   ```GAV A03;``` - Get the analog value of analog pin 6. If  analog value of A03 is 1012, it will return `GAV A03 = 1012;`.    
-  Analog input can  have range 0 - 1023.
+  Analog input can have range 0 - 1023.
   
 ---
 * __DLY [MILLISECONDS];__  - Waits for given milliseconds.  
@@ -103,12 +103,12 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
   ```SEI D02 1;``` - Enable external interrupt on pin D02. If pin D02 changes from LOW to HIGH, it will send `INTRPT = 1028`. 
   The response is two byte data. Higher order bits contain pins. For `INTRPT = <value>` the information can be extracted as:
   
-| Test           | If true                  | If false                |
-| :------------- |:-------------------------| :-----------------------|
-| value && 0x400 | Interrupt on D02         | D02 not interrupted     |
-| value && 0x4   | D02 value change to HIGH | D02 value change to LOW | 
-| value && 0x800 | Interrupt on D03         | D03 not interrupted     |
-| value && 0x8   | D03 value change to HIGH | D03 value change to LOW |
+| Test           | True                               | False                            |
+| :------------- |:-----------------------------------| :--------------------------------|
+| value && 0x400 | Input value of D02 changed         |Input value of D02 not changed    |
+| value && 0x4   | Input value of D02 changed to HIGH |Input value of D02 changed to LOW | 
+| value && 0x800 | Input value of D03 changed         |Input value of D03 not changed    |
+| value && 0x8   | Input value of D03 changed to HIGH |Input value of D03 changed to LOW |
 
 ---
 
