@@ -1,4 +1,4 @@
-# Sermonics V0.1
+# Sermonics v0.1
 Sermoncs is Arduino sketch for Uno and Nano. Sermonics stand for serial mnenonics. Mnemonics over the serial port, are used to control the Arduino. This is targeted for getting started with Arduino, without having to upload sketch for every minor change. After uploading this sketch port operations can be controlled using serial I/O. Serail I/O can be managed using Serial Monitor, USB programs / programming, Wireless, Bluetooth etc.  
 
 __*Refer to [warnings](#warnings) and [limitations](#limitations) at the bottom, before use.*__
@@ -114,7 +114,7 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
 
 ## Warnings 
 * Do not modify digital pin 0 and 1 (pins D00 and D01). Serial communication may stop working.
-* If using I2C, don't modify A0 and A1 (pins A00 and A01). I2C may stop working.
+* If using I2C, don't modify A4 and A5 (pins A04 and A05). I2C may stop working.
 * This sketch doesn't check for safety or validity of sermonics.
 * Using invalid command might stop arduino and reset might be required.
 
