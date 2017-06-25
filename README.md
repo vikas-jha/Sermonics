@@ -1,60 +1,28 @@
-# sermonics
-Sermoncs is Arduino sketch for Uno and Nano. Mnemonics over the serial port is used to control the Arduino.
+# Sermonics
+Sermonics is Arduino sketch for Uno and Nano. Sermonics stand for serial mnenonics. Mnemonics over the serial port, are used to control the Arduino. This is targeted for getting started with Arduino, without having to upload sketch for every minor change. After uploading this sketch, port operations can be controlled using serial I/O. Serail I/O can be managed using Serial Monitor, USB programs or programming, Wireless, Bluetooth etc.  
 
-### How to use
-Upload the sermonics.ino file to the Arduino. Open serial monitor and type mnemonics.
+__*Refer to [warnings](#warnings) and [limitations](#limitations) at the bottom, before use.*__
+
+## How to use
+Upload the sermonics.ino file from version folder (e.g. __*[v0.1/sermonics.ino](/v0.1/sermonics.ino)*__) to the Arduino Uno or Nano. Open serial monitor and start typing sermonics. 
 
 ### Sermonics Usage
-* Refer the sermonics desciption for usage details. 
-* All sermonics must end with semi-colon (;). 
-* Sermonics returning value have response syntax "sermonics = value". 
-* Multiple sermonics can be provided in single sentence upto 50 characters e.g. "SPM D06 1; SDV D06 1; DLY 1000; SDV D06 0;". 
-* Sermonics are case-insensitive. Response will always in upper-case.
 
-#### PIN in Sermonics
-Most of the sermonics require pin. This sketch can support D00 - D99 digital pins, but only A0-A5 analog pins are supported. Pin are specified for mnemonics using a letter for pin type (A- analog, D - digital) and two digit pin number combination. Single-digit pin number should be zero-padded. e.g. D00 , D01, D12, A05 etc.
+---
+* __*Refer to vesion documentation for sermonics details.*__
 
+   * [v0.1](/v0.1/README.md)
+* Refer to examples in examples folder, within the version folder.
 
-* SPM - Set pin mode.  
-   SPM [PIN] [PIN_MODE];     
-    PIN_MODE   
-     * 0  INPUT  
-     * 1  OUTPUT   
-     * 2  INPUT_PULLUP  
+---
 
-   SPM D06 1; - Sets digital pin 6 to output mode.
+## Warnings 
+* Do not modify digital pin 0 and 1 (Pins D00 and D01). Serial communication may stop working.
+* If using I2C, don't modify A0 and A1 (Pins A00 and A01). I2C may stop working.
+* This sketch doesn't check for safety or validity of sermonics.
+* Using invalid command might stop arduino and reset might be required.
 
-* SDV - Set digital value. Pin should be in output mode.  
-   SDV [PIN] [PIN_VALUE];     
-    PIN_VALUE   
-     * 0  LOW  
-     * 1  HIGH   
-
-  SDV D04 1; - Sets digital pin 4 to HIGH.
-
-* SAV - Set analog value. Only PWM output pins must be used. Pin should be in output mode.  
-   SAV [PIN] [ANALOG_VALUE];     
-    ANALOG_VALUE  - [0 - 255]  
-
-   SAV D06 240; - Sets PWM value of digital pin 6 to 240. Analog value must be in range 0 -255.  
-
-* GDV - Get digital value. Returns digital vlue of pin. Pin should be in input mode.  
-   GDV [PIN];  
-
-  GDV D04; - Gets digital pin 4 to HIGH. If D04 is high, it will return "GDV D04 = 1;". 
-  The value is 0 - LOW and 1 - HIGH.
-
-* GAV - Get analog value. Only analog input pins must be used. Pin should be in input mode.  
-   GAV [PIN];    
-
-  GAV A03; - Get the analog value of analog pin 6. If  analog value of A04 is 1012, it will return "GAV A03 = 1012;". Analog input can  have range 0 - 1024.
-
-* DLY - Waits for given milliseconds.  
-   DLY [MILLISECONDS];  
- 
-   DLY 20; - waits for 20 milliseconds. 
-
-* DLU - Waits for given microseconds.  
-   DLU [MICROSECONDS];  
-  DLU 2000; - waits for 2000 microseconds.   
-
+## Limitations
+* I2C is not supported.
+* Microsecond accuracy is not available. Accuracy only upto milliseconds is available.
+* Communication is asynchronous.
