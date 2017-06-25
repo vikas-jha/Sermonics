@@ -80,8 +80,8 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
 
 ### Advance Sermonics
 ---
-* __GPI [PIN] [DIGITAL_VALUE];__ - Gets length of pulse. Same as pulseIn().
-   DIGITAL_VALUE   
+* __GPI [PIN] [DIGITAL_VALUE];__ - Gets length of pulse. Same as pulseIn().   
+   DIGITAL_VALUE
      * 0 - LOW  
      * 1 - HIGH  
     
@@ -95,7 +95,7 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
   
 ---
 
-* __SEI [PIN] [ENABLE];__ - Enables external interrupt on pin D02 and/or D03. These are pin change interrupt. ** Only pin D02 or D03 must be used **.
+* __SEI [PIN] [ENABLE];__ - Enables external interrupt on pin D02 and/or D03. These are pin change interrupt. __Only pin D02 or D03 must be used.__    
     ENABLE  
      * 0 - Disable interrupt  
      * 1 - Enable interrupt
