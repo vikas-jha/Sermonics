@@ -38,8 +38,8 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
 ---
 * __SDV [PIN] [DIGITAL_VALUE];__ - Set digital value. Pin should be in output mode.      
     DIGITAL_VALUE   
-     * 0  LOW  
-     * 1  HIGH   
+     * 0 - LOW  
+     * 1 - HIGH   
 
   ```SDV D04 1;``` - Sets digital pin 4 to HIGH.
   
@@ -54,13 +54,13 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
 * __GDV [PIN];__ - Get digital value. Returns digital value of pin. Pin should be in input mode.  
      
 
-  ```GDV D04;``` - Gets the value of digital pin 4. If D04 is high, it will return "GDV D04 = 1;". 
+  ```GDV D04;``` - Gets the value of digital pin 4. If D04 is high, it will return `GDV D04 = 1;`. 
   The value is 0 - LOW and 1 - HIGH.
   
 ---
 * __GAV [PIN];__ - Get analog value. Only analog input pins must be used. Pin should be in input mode.     
 
-  ```GAV A03;``` - Get the analog value of analog pin 6. If  analog value of A03 is 1012, it will return "GAV A03 = 1012;". Analog input can  have range 0 - 1023.
+  ```GAV A03;``` - Get the analog value of analog pin 6. If  analog value of A03 is 1012, it will return `GAV A03 = 1012;`. Analog input can  have range 0 - 1023.
   
 ---
 * __DLY [MILLISECONDS];__  - Waits for given milliseconds.  
@@ -78,8 +78,8 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
 ---
 * __GPI [PIN] [DIGITAL_VALUE];__ - Gets length of pulse. Same as pulseIn().
    DIGITAL_VALUE   
-        * 0  LOW  
-        * 1  HIGH
+        * 0 - LOW  
+        * 1 - HIGH
     
   ```GPI D08 1;``` - Returns the length of next HIGH pulse on digital pin 8. 20000 microseconds is timeout period. If pulse is longer, returns 0.   
   
