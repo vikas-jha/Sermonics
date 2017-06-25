@@ -49,6 +49,7 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
     ANALOG_VALUE  - [0 - 255]  
 
    ```SAV D06 240;``` - Sets PWM value of digital pin 6 to 240. Analog value must be in range 0 -255.  
+   
 ---
 * __GDV [PIN];__ - Get digital value. Returns digital value of pin. Pin should be in input mode.  
      
