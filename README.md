@@ -11,10 +11,10 @@ Upload the sermonics.ino file (from v0.1 folder) to the Arduino Uno or Nano. Ope
 * All sermonics must end with semi-colon (;). 
 * Sermonics returning value have response syntax `sermonics = value;`. 
 * Multiple sermonics can be provided in single sentence upto 50 characters.
-    ```"SPM D06 1; SDV D06 1; DLY 1000; SDV D06 0;"``` 
-* Sermonics are case-insensitive.
-* Response will always in upper-case, but space sensitive.
-* Sermonics may have extra information for identification after '|'e.g. ```SPV D06 1 | 16;```
+    `"SPM D06 1; SDV D06 1; DLY 1000; SDV D06 0;"` 
+* Sermonics are case-insensitive, but space sensitive.
+* Response will always in upper-case.
+* Sermonics may have extra information for identification after '&#124;'e.g. `SPV D06 1 | 16;`
 * An unhandled sermonics will return `sermonics = NOHANDLER;`
 
 ### PIN in Sermonics
@@ -29,7 +29,7 @@ Most of the sermonics require pin. This sketch can support D00 - D99 digital pin
      * 1 - OUTPUT   
      * 2 - INPUT_PULLUP  
 
-   ```SPM D06 1;``` - Sets digital pin 6 to output mode.
+   `SPM D06 1;` - Sets digital pin 6 to output mode.
 ---
 * __SDV [PIN] [DIGITAL_VALUE];__ - Set digital value. Pin should be in output mode.      
     DIGITAL_VALUE   
