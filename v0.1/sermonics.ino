@@ -1,8 +1,16 @@
 /*************************************************
-*   Strictly only for Arduino Uno and Nano
+    Strictly only for Arduino Uno and Nano
 **************************************************/
 
+#include <Wire.h>
+
+#ifdef  ARDUINO_AVR_UNO
 char analogPins[] = {A0, A1, A2, A3, A4, A5};
+#elif ARDUINO_AVR_NANO
+char analogPins[] = {A0, A1, A2, A3, A4, A5, A6, A7};
+#endif
+
+
 
 String cmd = "";
 
@@ -90,6 +98,39 @@ void processCommand(String cmd) {
   } else if (a.startsWith("DLY")) {   ///Delay
     int value = getIntFromString(a, 4);
     delay(value);
+  } else if (a.startsWith("I2C ")) {   ///I2C communication
+    int c = a.charAt(4) - '0';
+    if (c == 1) {
+      Wire.begin();
+    } else if ( c == 2) {
+      int addr = getByteFromString(a, 6);
+      int nBytes = getByteFromString(a, 9);
+      Wire.requestFrom(addr, nBytes);
+      String res = String(addr);
+      if (nBytes <= Wire.available())
+        for ( int i = 0 ; i < nBytes; i++) {
+          int reading = Wire.read();
+          res += " ";
+          res += reading;
+        }
+      writeResponse(cmd, res);
+
+    } else if ( c == 3) {
+      int addr = getByteFromString(a, 6);
+      int nBytes = getByteFromString(a, 9);
+      String res = String(addr);
+      res += " ";
+      res += nBytes;
+      //Wire.beginTransmission(addr);
+      for ( int i = 0 ; i < nBytes; i++) {
+        int value = getByteFromString(a, 12 + (3 * i));
+        res += " ";
+        res += value;
+        //Wire.write(byte(value));
+      }
+      //Wire.endTransmission();
+      writeResponse(cmd, res);
+    }
   } else if (a.startsWith("DLU")) {   ///Delay
     int value = getIntFromString(a, 4);
     delayMicroseconds(value);
@@ -152,7 +193,6 @@ void processCommand(String cmd) {
     }
   } else if (a.startsWith("HSI")) { ///Hardware specific instruction
     handleHSI(a);
-
   } else {
     writeResponse(cmd, "NOHANDLER");
   }
@@ -191,6 +231,23 @@ long getIntFromString(String s, int start) {
   return a.toInt();
 }
 
+long getByteFromString(String s, int start) {
+  String a = String(s);
+  a.remove(0, start);
+  int b = 0;
+  if (a.charAt(0) >= '0' && a.charAt(0) <= '9') {
+    b +=  (a.charAt(0) - '0') << 4;
+  } else if (a.charAt(0) >= 'A' && a.charAt(0) <= 'F') {
+    b +=  (a.charAt(0) - 'A' + 10) << 4;
+  }
+  if (a.charAt(1) >= '0' && a.charAt(1) <= '9') {
+    b +=  (a.charAt(1) - '0');
+  } else if (a.charAt(1) >= 'A' && a.charAt(1) <= 'F') {
+    b +=  (a.charAt(1) - 'A' + 10);
+  }
+  return b;
+}
+
 void writeResponse(String a, String response) {
   Serial.println(a + " = " + response + ";");
 }
@@ -201,7 +258,7 @@ void writeResponse(String a, long response) {
 
 
 /****************************************************
-*  Add hardware specific instruction handling here
+   Add hardware specific instruction handling here
 *****************************************************/
 void handleHSI(String a) {
   if (a.startsWith("HSI USR")) {
