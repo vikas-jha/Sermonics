@@ -1,5 +1,5 @@
 # Sermonics
-Sermonics is Arduino sketch for Uno and Nano. Sermonics stand for serial mnenonics. Mnemonics over the serial port, are used to control the Arduino. This is targeted for getting started with Arduino, without having to upload sketch for every minor change. After uploading this sketch, port operations can be controlled using serial I/O. Serail I/O can be managed using Serial Monitor, USB programs or programming, Wireless, Bluetooth etc.  
+Sermonics is Arduino sketch for Uno and Nano. Sermonics stand for serial mnenonics. Mnemonics over the serial port, are used to control the Arduino. This is targeted for getting started with Arduino, without having to upload sketch for every minor change. After uploading this sketch, port operations can be controlled using serial I/O. Serial I/O can be managed using Serial Monitor, USB programs or programming, Wireless, Bluetooth etc.  
 
 __*Refer to [warnings](#warnings) and [limitations](#limitations) at the bottom, before use.*__
 
