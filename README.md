@@ -13,6 +13,7 @@ Upload the sermonics.ino file from version folder (e.g. __*[v0.1/sermonics.ino](
 
    * [v0.1](/v0.1/README.md)
 * Refer to examples in examples folder, within the version folder.
+* Instructable: [Arduino-CommandLine](https://www.instructables.com/Arduino-CommandLine/)
 
 ---
 
